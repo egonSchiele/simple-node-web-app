@@ -10,8 +10,8 @@ export default defineConfig({
     outDir: "dist/frontend",
     rollupOptions: {
       input: {
-        index: path.resolve(__dirname, "public", "index.html"),
-        about: path.resolve(__dirname, "public", "about.html"),
+        index: path.resolve(__dirname, "pages", "index.html"),
+        about: path.resolve(__dirname, "pages", "about.html"),
       },
     },
   },
