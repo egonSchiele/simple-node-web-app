@@ -4,7 +4,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "build": "tsc && vite build",
+    "build": "tsc -p src/backend/tsconfig.json && tsc -p src/frontend/tsconfig.json && vite build",
     "start": "node dist/backend/index.js",
     "dev": "vite"
   },
