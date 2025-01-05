@@ -3,14 +3,19 @@ import express from "express";
 import { fileURLToPath } from "url";
 import { add } from "../common/util.js";
 import cors from "cors";
+import compression from "compression";
 
 const app = express();
 const port = 3000;
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+app.use(compression());
 app.use(express.static("dist/frontend"));
 app.use(cors({ origin: "http://localhost:3000" }));
+
+// or
+// app.use(cors());
 
 app.use((req, res, next) => {
   next();
