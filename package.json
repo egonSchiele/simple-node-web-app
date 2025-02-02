@@ -12,7 +12,8 @@
     "backend-watch": "nodemon --watch src/backend -e ts,js,tsx,jsx --exec 'yarn build-backend && yarn start'",
     "watch": "concurrently 'yarn frontend-watch' 'yarn backend-watch'",
     "test": "vitest",
-    "prettier": "prettier --write ."
+    "prettier": "prettier --write .",
+    "lint": "eslint ."
   },
   "keywords": [],
   "author": "",
@@ -28,6 +29,7 @@
     "vite-express": "^0.20.0"
   },
   "devDependencies": {
+    "@eslint/js": "^9.19.0",
     "@tailwindcss/vite": "^4.0.3",
     "@types/compression": "^1.7.5",
     "@types/cors": "^2.8.17",
@@ -35,10 +37,14 @@
     "@types/react": "^19.0.2",
     "@types/react-dom": "^19.0.2",
     "concurrently": "^9.1.2",
+    "eslint": "^9.19.0",
+    "eslint-plugin-react": "^7.37.4",
+    "globals": "^15.14.0",
     "nodemon": "^3.1.9",
     "prettier": "3.4.2",
     "sass-embedded": "^1.83.4",
     "tailwindcss": "^4.0.3",
+    "typescript-eslint": "^8.22.0",
     "vite": "^6.0.7",
     "vitest": "^2.1.8"
   }
