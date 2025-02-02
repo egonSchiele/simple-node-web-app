@@ -6,7 +6,7 @@ import { cls } from "../common/util.js";
 
 const App = () => {
   return (
-    <h1 className={cls("bg-blue-500", "text-2xl", "font-bold")}>
+    <h1 className={cls(classes.header, "bg-blue-500", "text-2xl", "font-bold")}>
       Hello World from React!
     </h1>
   );
