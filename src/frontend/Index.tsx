@@ -1,11 +1,15 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
-import "./globals.scss";
+import "./globals.css";
 import classes from "./index.module.scss";
 import { cls } from "../common/util.js";
 
 const App = () => {
-  return <h1 className={cls(classes.header)}>Hello World from React!</h1>;
+  return (
+    <h1 className={cls("bg-blue-500", "text-2xl", "font-bold")}>
+      Hello World from React!
+    </h1>
+  );
 };
 
 const root = createRoot(document.getElementById("root") as HTMLElement);
