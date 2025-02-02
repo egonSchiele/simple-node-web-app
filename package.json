@@ -13,7 +13,8 @@
     "watch": "concurrently 'yarn frontend-watch' 'yarn backend-watch'",
     "test": "vitest",
     "prettier": "prettier --write .",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "prepare": "git config core.hooksPath scripts/hooks"
   },
   "keywords": [],
   "author": "",

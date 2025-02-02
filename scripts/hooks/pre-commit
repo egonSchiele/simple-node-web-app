@@ -1,0 +1,4 @@
+#!/bin/bash
+echo "Changed files:"
+git diff --name-only --cached
+# npm run hi
