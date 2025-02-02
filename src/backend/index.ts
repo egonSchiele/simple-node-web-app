@@ -33,7 +33,7 @@ app.use(
   express.urlencoded({
     limit: "5mb",
     extended: true,
-  })
+  }),
 );
 
 // log each request
@@ -43,7 +43,7 @@ app.use((req, res, next) => {
   res.on("finish", () => {
     const responseTime = Date.now() - start;
     console.log(
-      `${req.method} ${req.url} -> ${res.statusCode} ${responseTime}ms`
+      `${req.method} ${req.url} -> ${res.statusCode} ${responseTime}ms`,
     );
   });
 
