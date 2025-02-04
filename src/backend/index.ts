@@ -4,6 +4,7 @@ import { fileURLToPath } from "url";
 import cors from "cors";
 import compression from "compression";
 import { parse, serialize } from "cookie";
+import { db } from "@/backend/db/index.js";
 
 const app = express();
 const port = 3000;
@@ -32,7 +33,7 @@ app.use(
   express.urlencoded({
     limit: "5mb",
     extended: true,
-  }),
+  })
 );
 
 // log each request
@@ -42,7 +43,7 @@ app.use((req, res, next) => {
   res.on("finish", () => {
     const responseTime = Date.now() - start;
     console.log(
-      `${req.method} ${req.url} -> ${res.statusCode} ${responseTime}ms`,
+      `${req.method} ${req.url} -> ${res.statusCode} ${responseTime}ms`
     );
   });
 
@@ -61,6 +62,11 @@ app.get("/getCookie", (req, res) => {
 
 app.get("/index.html", (req, res) => {
   res.sendFile(path.join(__dirname, "../frontend/pages/index.html"));
+});
+
+app.get("/moods", async (req, res) => {
+  const moods = await db.selectFrom("moods").selectAll().execute();
+  res.json(moods);
 });
 
 app.get("/about.html", (req, res) => {

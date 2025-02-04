@@ -25,6 +25,8 @@
     "cookie": "^1.0.2",
     "cors": "^2.8.5",
     "express": "^4.21.2",
+    "kysely": "^0.27.5",
+    "pg": "^8.13.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "vite-express": "^0.20.0"
@@ -35,6 +37,7 @@
     "@types/compression": "^1.7.5",
     "@types/cors": "^2.8.17",
     "@types/express": "^5.0.0",
+    "@types/pg": "^8.11.11",
     "@types/react": "^19.0.2",
     "@types/react-dom": "^19.0.2",
     "concurrently": "^9.1.2",
