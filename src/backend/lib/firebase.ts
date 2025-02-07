@@ -1,7 +1,5 @@
-import { initializeApp } from "firebase-admin/app";
-import { DecodedIdToken, getAuth } from "firebase-admin/auth";
 import { failure, Result, success } from "@/common/types.js";
-const app = initializeApp();
+import { DecodedIdToken, getAuth } from "firebase-admin/auth";
 
 // decodedToken includes email, user_id, and other fields
 export const verifyIdToken = async (
