@@ -1,8 +1,15 @@
 @import "tailwindcss";
 
 body {
-  background-color: black;
-  color: #aaa;
+  background-image: linear-gradient(
+    to right top,
+    #5a88e5,
+    #6d7ee8,
+    #8572e8,
+    #9d63e2,
+    #b64ed8
+  );
+  color: white;
 }
 
 @theme {

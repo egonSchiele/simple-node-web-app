@@ -2,6 +2,7 @@ import path from "path";
 import { z } from "zod";
 export const __dirname = import.meta.dirname;
 export const ROOTDIR = path.join(__dirname, "../../");
+export const PAGESDIR = path.join(ROOTDIR, "frontend/pages");
 
 const configSchema = z.object({
   DB_HOST: z.string().default("localhost"),
