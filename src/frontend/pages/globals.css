@@ -1,0 +1,48 @@
+@import "tailwindcss";
+
+body {
+  background-color: black;
+  color: #aaa;
+}
+
+@theme {
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 2rem;
+  --spacing-lg: 3rem;
+  --spacing-xl: 4rem;
+  --spacing-2xl: 6rem;
+  --spacing-3xl: 8rem;
+  --spacing-4xl: 12rem;
+}
+
+.input-text {
+  @apply bg-white text-black border border-gray-300 rounded-lg px-3 py-2;
+}
+
+.btn {
+  @apply px-4 py-2 rounded-md text-center cursor-pointer;
+}
+
+.btn-primary {
+  @apply bg-blue-500 text-white hover:bg-blue-600;
+}
+
+.btn-secondary {
+  @apply bg-gray-500 text-white hover:bg-gray-600;
+}
+
+.banner-info {
+  @apply bg-green-300 text-black rounded-lg px-3 py-2 w-full;
+}
+
+.banner-error {
+  @apply bg-red-300 text-black rounded-lg px-3 py-2 w-full;
+}
+
+.link-primary {
+  @apply text-blue-500 cursor-pointer hover:underline;
+}
+.link-secondary {
+  @apply text-gray-500 cursor-pointer hover:underline;
+}

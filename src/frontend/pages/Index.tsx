@@ -1,6 +1,6 @@
+import "./globals.css";
 import React from "react";
 import { createRoot } from "react-dom/client";
-import "./globals.css";
 import classes from "./index.module.scss";
 import { cls } from "@/common/util.js";
 

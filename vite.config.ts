@@ -19,6 +19,8 @@ export default defineConfig({
       input: {
         index: path.resolve(__dirname, "pages", "index.html"),
         about: path.resolve(__dirname, "pages", "about.html"),
+        signin: path.resolve(__dirname, "pages", "signin.html"),
+        signup: path.resolve(__dirname, "pages", "signup.html"),
       },
     },
   },
