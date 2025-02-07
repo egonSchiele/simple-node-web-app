@@ -31,7 +31,8 @@
     "pg": "^8.13.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "vite-express": "^0.20.0"
+    "vite-express": "^0.20.0",
+    "zod": "^3.24.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.19.0",
