@@ -7,7 +7,8 @@ FROM --platform=linux/amd64 node:22
 WORKDIR /
 
 COPY . ./
-RUN npm install
-RUN npm run build
+RUN npm install -g pnpm
+RUN pnpm install
+RUN pnpm run build
 ENV NODE_ENV=production
-CMD ["npm", "run", "start"]
+CMD ["pnpm", "run", "start"]

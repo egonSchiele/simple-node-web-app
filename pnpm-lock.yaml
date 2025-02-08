@@ -96,6 +96,9 @@ importers:
       tsc-alias:
         specifier: ^1.8.10
         version: 1.8.10
+      typescript:
+        specifier: ^5.7.3
+        version: 5.7.3
       typescript-eslint:
         specifier: ^8.22.0
         version: 8.23.0(eslint@9.19.0(jiti@2.4.2))(typescript@5.7.3)

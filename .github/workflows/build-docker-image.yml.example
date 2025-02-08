@@ -7,6 +7,8 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      IMAGE_NAME: simple-node-web-app
     steps:
       - uses: actions/checkout@v4
       - name: Configure AWS credentials
@@ -21,9 +23,9 @@ jobs:
       - name: Build and push Docker image
         env:
           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-          ECR_REPOSITORY: simple-node-web-app
+          ECR_REPOSITORY: ${{ env.IMAGE_NAME }}
           IMAGE_TAG: ${{ github.sha }}
         run: |
-          docker build -t simple-node-web-app .
-          docker image tag simple-node-web-app:latest $ECR_REGISTRY/$ECR_REPOSITORY:latest
+          docker build -t ${{ env.IMAGE_NAME }} .
+          docker image tag ${{ env.IMAGE_NAME }}:latest $ECR_REGISTRY/$ECR_REPOSITORY:latest
           docker image push $ECR_REGISTRY/$ECR_REPOSITORY:latest
