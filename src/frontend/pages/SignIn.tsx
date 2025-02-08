@@ -45,7 +45,7 @@ const App = () => {
         message: `You are signed in as ${user.email}`,
       });
       const token = await user.getIdToken();
-      fetch("/verify-token", {
+      fetch("/auth/verify-token", {
         method: "POST",
         headers: {
           authorization: token,
