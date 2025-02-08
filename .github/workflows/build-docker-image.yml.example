@@ -21,9 +21,9 @@ jobs:
       - name: Build and push Docker image
         env:
           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-          ECR_REPOSITORY: mood
+          ECR_REPOSITORY: simple-node-web-app
           IMAGE_TAG: ${{ github.sha }}
         run: |
-          docker build -t mood .
-          docker image tag mood:latest $ECR_REGISTRY/$ECR_REPOSITORY:latest
+          docker build -t simple-node-web-app .
+          docker image tag simple-node-web-app:latest $ECR_REGISTRY/$ECR_REPOSITORY:latest
           docker image push $ECR_REGISTRY/$ECR_REPOSITORY:latest
