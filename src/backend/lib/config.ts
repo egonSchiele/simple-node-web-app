@@ -6,7 +6,10 @@ export const PAGESDIR = path.join(ROOTDIR, "frontend/pages");
 
 const configSchema = z.object({
   DB_HOST: z.string().default("localhost"),
-  DB_PORT: z.number().default(5432),
+  DB_PORT: z
+    .string()
+    .default("5432")
+    .transform((v) => parseInt(v)),
   DB_USER: z.string().default("postgres"),
   DB_PASSWORD: z.string().default("password"),
   DB_DATABASE: z.string().default("your-database-name"),
