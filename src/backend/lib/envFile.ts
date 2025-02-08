@@ -1,21 +1,20 @@
 // parse .env file if it exists into process.env
 import { existsSync, readFileSync } from "fs";
-import { resolve } from "path";
-import { ROOTDIR } from "./config.js";
+import { resolve, join } from "path";
 
-export const processEnvFile = () => {
-  const envfiles = [
-    resolve(ROOTDIR, "..", ".env.local"),
-    resolve(ROOTDIR, "..", ".env"),
-  ];
-  for (const envfile of envfiles) {
-    if (tryEnvFile(envfile)) {
-      return;
-    }
+export const __dirname = import.meta.dirname;
+export const rootDir = join(__dirname, "../../");
+const envfiles = [
+  resolve(rootDir, "..", ".env.local"),
+  resolve(rootDir, "..", ".env"),
+];
+for (const envfile of envfiles) {
+  if (tryEnvFile(envfile)) {
+    break;
   }
-};
+}
 
-const tryEnvFile = (envfile: string) => {
+function tryEnvFile(envfile: string) {
   console.log("Checking for env file at", envfile);
   if (existsSync(envfile)) {
     console.log("Reading env file at", envfile);
@@ -28,4 +27,4 @@ const tryEnvFile = (envfile: string) => {
     return true;
   }
   return false;
-};
+}
