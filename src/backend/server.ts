@@ -6,6 +6,8 @@ import { router } from "express-file-routing";
 import path from "path";
 import { ROOTDIR } from "@/backend/lib/config.js";
 import loggerMiddleware from "@/backend/lib/middleware/logger.js";
+import { processEnvFile } from "@/backend/lib/envFile.js";
+processEnvFile();
 
 const app = express();
 const port = process.env.PORT || 3000;
