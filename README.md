@@ -17,6 +17,8 @@ DB_PASSWORD
 DB_DATABASE
 ```
 
+You can set them in a `.env` file or `.env.local` file at the root of your project. The `.env.local` file is for local dev and shouldn't be checked in. `.env` can be checked in, but remember not to check in sensitive information.
+
 ## Authentication
 If you want to do authentication with Firebase (which I highly recommend, it's very simple), you'll need to do the following things.
 

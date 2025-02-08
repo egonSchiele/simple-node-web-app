@@ -45,12 +45,9 @@ const App = () => {
         message: `You are signed in as ${user.email}`,
       });
       const token = await user.getIdToken();
-      fetch("/auth/verify-token", {
-        method: "POST",
-        headers: {
-          authorization: token,
-        },
-      });
+      const now = new Date();
+      const expirationDate = new Date(now.getTime() + 2 * 24 * 60 * 60 * 1000); // 2 days
+      document.cookie = `token=${token}; expires=${expirationDate.toUTCString()}; path=/`;
     } catch (error) {
       console.log({ error });
       const e = error as FirebaseError;
