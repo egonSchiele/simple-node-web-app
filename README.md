@@ -4,6 +4,19 @@ Welcome! This is a simple repo showing how to set up a bunch of things web apps 
 
 Run `./scripts/setup.sh` to create a .env file and install dependencies.
 
+## Environment Variables
+
+Here are some environment variables you may want to set.
+
+```bash
+# Database
+DB_HOST
+DB_PORT
+DB_USER
+DB_PASSWORD
+DB_DATABASE
+```
+
 ## Authentication
 If you want to do authentication with Firebase (which I highly recommend, it's very simple), you'll need to do the following things.
 
