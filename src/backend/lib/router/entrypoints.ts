@@ -1,26 +1,45 @@
 import { PAGESDIR } from "@/backend/lib/config.js";
-import { Router } from "express";
+import { NextFunction, Request, Response, Router } from "express";
 import path from "path";
+import { getUser, isLoggedIn } from "@/backend/lib/middleware/auth.js";
 
 const entrypointsRouter = Router();
 
-const entrypoints = ["index.html", "signin.html", "signup.html"];
-
-entrypoints.forEach((entrypoint) => {
-  entrypointsRouter.get(`/${entrypoint}`, (req, res) =>
-    res.sendFile(path.join(PAGESDIR, entrypoint))
-  );
-});
-
-const aliases = {
-  "/": "index.html",
-  "/signin": "signin.html",
-  "/signup": "signup.html",
+export const redirectIfAlreadyLoggedIn = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  const user = await getUser(req.cookies.token);
+  if (user) {
+    res.redirect(`/`);
+    return;
+  }
+  next();
 };
 
-Object.entries(aliases).forEach(([alias, entrypoint]) => {
-  entrypointsRouter.get(alias, (req, res) =>
-    res.sendFile(path.join(PAGESDIR, entrypoint))
+type Alias = {
+  file: string;
+  middleware?: any[];
+};
+
+const aliases = {
+  "/": {
+    file: "index.html",
+  },
+  "/signin": {
+    file: "signin.html",
+    middleware: [redirectIfAlreadyLoggedIn],
+  },
+  "/signup": {
+    file: "signup.html",
+    middleware: [redirectIfAlreadyLoggedIn],
+  },
+};
+
+Object.entries(aliases).forEach(([alias, entrypoint]: [string, Alias]) => {
+  entrypointsRouter.get(alias, ...(entrypoint.middleware || []), (req, res) =>
+    res.sendFile(path.join(PAGESDIR, entrypoint.file))
   );
 });
 

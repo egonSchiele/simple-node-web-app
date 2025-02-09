@@ -2,3 +2,4 @@ dist/*
 node_modules/*
 .*
 config/firebase-adminsdk.json
+firebase-adminsdk.json

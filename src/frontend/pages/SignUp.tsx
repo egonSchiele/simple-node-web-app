@@ -43,7 +43,7 @@ const App = () => {
       });
       const token = await user.getIdToken();
       const now = new Date();
-      const expirationDate = new Date(now.getTime() + 2 * 24 * 60 * 60 * 1000); // 2 days
+      const expirationDate = new Date(now.getTime() + 14 * 24 * 60 * 60 * 1000); // 14 days
       document.cookie = `token=${token}; expires=${expirationDate.toUTCString()}; path=/`;
     } catch (error) {
       console.log({ error });
@@ -87,7 +87,7 @@ const App = () => {
       <button onClick={signUp} className="btn btn-primary">
         Sign up
       </button>
-      <a href="/signin.html" className="btn btn-secondary">
+      <a href="/signin" className="btn btn-secondary">
         Have an account? Sign in
       </a>
       <div className="flex justify-center">

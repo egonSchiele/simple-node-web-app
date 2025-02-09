@@ -15,19 +15,8 @@ const App = () => {
   const [password, setPassword] = React.useState("");
   const [banner, setBanner] = React.useState<t.Banner | null>(null);
   const [loading, setLoading] = React.useState(false);
-  const [signedIn, setSignedIn] = React.useState(false);
   useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
-        // User is signed in, see docs for a list of available properties
-        // https://firebase.google.com/docs/reference/js/auth.user
-        setBanner({
-          level: "info",
-          message: `You are signed in as ${user.email}. Welcome back!`,
-        });
-        setSignedIn(true);
-      }
-    });
+    auth.signOut();
   }, []);
 
   const signIn = async () => {
@@ -46,8 +35,16 @@ const App = () => {
       });
       const token = await user.getIdToken();
       const now = new Date();
-      const expirationDate = new Date(now.getTime() + 2 * 24 * 60 * 60 * 1000); // 2 days
+      const expirationDate = new Date(now.getTime() + 14 * 24 * 60 * 60 * 1000); // 14 days
       document.cookie = `token=${token}; expires=${expirationDate.toUTCString()}; path=/`;
+
+      const searchParams = new URLSearchParams(window.location.search);
+      const redirect = searchParams.get("redirect");
+      if (redirect) {
+        window.location.href = redirect;
+      } else {
+        window.location.href = "/";
+      }
     } catch (error) {
       console.log({ error });
       const e = error as FirebaseError;
@@ -67,38 +64,32 @@ const App = () => {
   return (
     <AuthModal title="Welcome">
       {banner && <Banner level={banner.level} message={banner.message} />}
-      {!signedIn && (
-        <>
-          <Section title="Email">
-            <input
-              className="input-text"
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-          </Section>
-          <Section title="Password">
-            <input
-              className="input-text"
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              onKeyDown={(e) => e.key === "Enter" && signIn()}
-            />
-          </Section>
-          <button onClick={signIn} className="btn btn-primary">
-            Sign in
-          </button>
-          <a href="/signup.html" className="btn btn-secondary">
-            Sign up
-          </a>
-        </>
-      )}
-      {signedIn && (
-        <button onClick={signOut} className="btn btn-primary">
-          Sign out
-        </button>
-      )}
+      <Section title="Email">
+        <input
+          className="input-text"
+          type="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+      </Section>
+      <Section title="Password">
+        <input
+          className="input-text"
+          type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          onKeyDown={(e) => e.key === "Enter" && signIn()}
+        />
+      </Section>
+      <button onClick={signIn} className="btn btn-primary">
+        Sign in
+      </button>
+      <a href="/signup" className="btn btn-secondary">
+        Sign up
+      </a>
+      <button onClick={signOut} className="link-secondary">
+        Sign out
+      </button>
       <div className="flex justify-center">
         <Spinner show={loading} />
       </div>

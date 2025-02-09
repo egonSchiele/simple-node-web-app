@@ -1,4 +1,4 @@
-import "@/backend/lib/envFile.js";
+import "@/backend/lib/envfile.js";
 import entrypointsRouter from "@/backend/lib/router/entrypoints.js";
 import compression from "compression";
 import { parse } from "cookie";
@@ -16,12 +16,13 @@ app.use(compression());
 
 // allow CORS for local development only
 /* app.use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", `http://localhost:${port}`);
+  res.setHeader("Access-Control-Allow-Origin", `*`);
   res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
   res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
+  res.setHeader("Access-Control-Allow-Credentials", "true");
   next();
-}); */
-
+});
+ */
 // serve static files from the frontend folder
 app.use(express.static("dist/frontend"));
 
