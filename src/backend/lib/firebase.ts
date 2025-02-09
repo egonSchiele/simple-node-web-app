@@ -18,7 +18,7 @@ const serviceAccountSchema = z.object({
   client_x509_cert_url: z.string(),
 });
 
-const serviceAccount = serviceAccountSchema.parse({
+const result = serviceAccountSchema.safeParse({
   type: process.env.FIREBASE_TYPE,
   project_id: process.env.FIREBASE_PROJECT_ID,
   private_key_id: process.env.FIREBASE_PRIVATE_KEY_ID,
@@ -31,14 +31,26 @@ const serviceAccount = serviceAccountSchema.parse({
   client_x509_cert_url: process.env.FIREBASE_CLIENT_X509_CERT_URL,
 });
 
+let serviceAccount: z.infer<typeof serviceAccountSchema> | null = null;
+if (result.success) {
+  serviceAccount = result.data;
+}
+
 let firebaseAppInitialized = false;
 export const initializeFirebaseApp = () => {
   if (firebaseAppInitialized) {
     return;
   }
-  initializeApp({
-    credential: admin.credential.cert(serviceAccount as admin.ServiceAccount),
-  });
+  if (!serviceAccount) {
+    console.log(
+      "Could not initialize Firebase app due to missing env vars:",
+      result
+    );
+  } else {
+    initializeApp({
+      credential: admin.credential.cert(serviceAccount as admin.ServiceAccount),
+    });
+  }
   firebaseAppInitialized = true;
 };
 
