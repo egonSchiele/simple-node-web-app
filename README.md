@@ -15,6 +15,17 @@ DB_DATABASE
 
 You can set them in a `.env` file or `.env.local` file at the root of your project. The `.env.local` file is for local dev and shouldn't be checked in. `.env` can be checked in, but remember not to check in sensitive information.
 
+## Migrations
+
+Migrations are done with Kysely. To run migrations, use the following command:
+
+```bash
+pnpm run kysely migrate make <migration-name>
+pnpm run kysely migrate list
+pnpm run kysely migrate up
+pnpm run kysely migrate down
+```
+
 ## Authentication
 If you want to do authentication with Firebase (which I highly recommend, it's very simple), you'll need to do the following things.
 
