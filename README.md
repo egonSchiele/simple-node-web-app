@@ -1,9 +1,5 @@
 Welcome! This is a simple repo showing how to set up a bunch of things web apps usually need.
 
-## Setup
-
-Run `./scripts/setup.sh` to create a .env file and install dependencies.
-
 ## Environment Variables
 
 Here are some environment variables you may want to set.
