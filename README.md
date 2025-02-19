@@ -26,6 +26,8 @@ pnpm run kysely migrate up
 pnpm run kysely migrate down
 ```
 
+Kysely will create two tables named `kysely_migration` and `kysely_migration_lock`. These tables are used to keep track of which migrations have been run.
+
 ## Authentication
 If you want to do authentication with Firebase (which I highly recommend, it's very simple), you'll need to do the following things.
 
