@@ -1,5 +1,17 @@
 Welcome! This is a simple repo showing how to set up a bunch of things web apps usually need.
 
+## Running
+
+```bash
+pnpm install
+# dev
+pnpm run watch
+
+# prod
+pnpm run build
+pnpm run start
+```
+
 ## Environment Variables
 
 Here are some environment variables you may want to set.

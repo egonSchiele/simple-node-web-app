@@ -15,7 +15,8 @@
     "prettier": "prettier --write .",
     "lint": "eslint .",
     "prepare": "git config core.hooksPath scripts/hooks",
-    "kysely": "kysely"
+    "kysely": "kysely",
+    "vite": "vite"
   },
   "keywords": [],
   "author": "",
