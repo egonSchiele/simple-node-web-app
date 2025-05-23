@@ -1,4 +1,4 @@
-import "@/backend/lib/envfile.js";
+import "@/backend/lib/envFile.js";
 import path from "path";
 import { z } from "zod";
 export const __dirname = import.meta.dirname;
