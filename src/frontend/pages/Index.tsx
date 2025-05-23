@@ -1,8 +1,10 @@
 import "./globals.css";
+import "./ui.css";
 import React from "react";
 import { createRoot } from "react-dom/client";
 import classes from "./index.module.css";
 import { cls } from "@/common/util.js";
+import { Button } from "egon-ui";
 
 const App = () => {
   return (
@@ -19,7 +21,9 @@ const App = () => {
         A template for building web apps in Node, with React and Express.
         <br />
         Learn more on{" "}
-        <a href="https://github.com/egonSchiele/simple-node-web-app">Github</a>.
+        <Button size="sm" onClick={() => window.open("https://github.com/egonSchiele/simple-node-web-app", "_blank")}>
+          Github
+        </Button>
       </p>
     </div>
   );

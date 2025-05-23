@@ -1,14 +1,15 @@
 import AuthModal, { Section } from "@/frontend/components/AuthModal.jsx";
 import Banner from "@/frontend/components/ui/Banner.jsx";
+import Spinner from "@/frontend/components/ui/Spinner.jsx";
 import { auth } from "@/frontend/lib/firebase.js";
 import * as t from "@/frontend/types.js";
 import { prettyFirebaseAuthError } from "@/frontend/util.js";
 import { FirebaseError } from "firebase/app";
-import { onAuthStateChanged, signInWithEmailAndPassword } from "firebase/auth";
+import { signInWithEmailAndPassword } from "firebase/auth";
 import React, { useEffect } from "react";
 import { createRoot } from "react-dom/client";
-import Spinner from "@/frontend/components/ui/Spinner.jsx";
 import "./globals.css";
+import "./ui.css";
 
 const App = () => {
   const [email, setEmail] = React.useState("");
