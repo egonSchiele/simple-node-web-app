@@ -9,7 +9,7 @@ import { ROOTDIR } from "@/backend/lib/config.js";
 import loggerMiddleware from "@/backend/lib/middleware/logger.js";
 
 const app = express();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 8234;
 
 // compression
 app.use(compression());
