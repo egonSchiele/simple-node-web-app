@@ -24,8 +24,8 @@ importers:
         specifier: ^4.21.2
         version: 4.21.2
       express-file-routing:
-        specifier: ^3.0.3
-        version: 3.0.3(express@4.21.2)
+        specifier: github:egonSchiele/express-file-routing
+        version: https://codeload.github.com/egonSchiele/express-file-routing/tar.gz/ff28e9735931dfc8700c96d38f6c27351c4d6e89(express@4.21.2)
       firebase:
         specifier: ^11.2.0
         version: 11.3.0
@@ -1969,6 +1969,10 @@ packages:
     resolution: {integrity: sha512-FQN4MRfuJeHf7cBbBMJFXhKSDq+2kAArBlmRBvcvFE5BB1HZKXtSFASDhdlz9zOYwxh8lDdnvmMOe/+5cdoEdg==}
     engines: {node: '>= 0.8'}
 
+  commander@14.0.0:
+    resolution: {integrity: sha512-2uM9rYjPvyq39NwLRqaiLtWHyDC1FvryJDa2ATTVims5YAS4PupsEQsDvP14FqhFr0P49CYDugi59xaxJlTXRA==}
+    engines: {node: '>=20'}
+
   commander@9.5.0:
     resolution: {integrity: sha512-KRs7WVDKg86PWiuAqhDrAQnTXZKraVcCc6vFdL14qrZ/DcWwuRo7VoiYXalXO7S5GKpqYiVEwCbgFDfxNHKJBQ==}
     engines: {node: ^12.20.0 || >=14}
@@ -2268,8 +2272,9 @@ packages:
     resolution: {integrity: sha512-bFi65yM+xZgk+u/KRIpekdSYkTB5W1pEf0Lt8Q8Msh7b+eQ7LXVtIB1Bkm4fvclDEL1b2CZkMhv2mOeF8tMdkA==}
     engines: {node: '>=12.0.0'}
 
-  express-file-routing@3.0.3:
-    resolution: {integrity: sha512-0936IhPc64moJHAG1Fz3SLCi0Upt6ahsbocrC6hdPUgmHY2018wjVrbln0HP67JoWFUdmmzypYiIHjF898s0hA==}
+  express-file-routing@https://codeload.github.com/egonSchiele/express-file-routing/tar.gz/ff28e9735931dfc8700c96d38f6c27351c4d6e89:
+    resolution: {tarball: https://codeload.github.com/egonSchiele/express-file-routing/tar.gz/ff28e9735931dfc8700c96d38f6c27351c4d6e89}
+    version: 3.1.0
     peerDependencies:
       express: '>4.1.2'
 
@@ -3716,6 +3721,9 @@ packages:
     resolution: {integrity: sha512-DZ4yORTwrbTj/7MZYq2w+/ZFdI6OZ/f9SFHR+71gIVUZhOQPHzVCLpvRnPgyaMpfWxxk/4ONva3GQSyNIKRv6A==}
     engines: {node: '>=10'}
 
+  tarsec@0.0.18:
+    resolution: {integrity: sha512-g1OZ7VyyaIjHT1KXI6o8tdebJT1WrC3801+RGw2mEEWc6S2gVC5aBDUZZRbxeUPkekMR5R/+ba6s8UfsJv8n8w==}
+
   teeny-request@9.0.0:
     resolution: {integrity: sha512-resvxdc6Mgb7YEThw6G6bExlXKkv6+YbuzGg9xuXxSgxJF7Ozs+o8Y9+2R3sArdWdW8nOokoQb1yrpFB0pQK2g==}
     engines: {node: '>=14'}
@@ -3809,6 +3817,10 @@ packages:
   typescript@5.7.3:
     resolution: {integrity: sha512-84MVSjMEHP+FQRPy3pX9sTVV/INIex71s9TL2Gm5FG/WG1SqXeKyZ0k7/blY/4FdOzI12CBy1vGc4og/eus0fw==}
     engines: {node: '>=14.17'}
+    hasBin: true
+
+  typestache@0.4.4:
+    resolution: {integrity: sha512-KBovlinBx3jy9Vbh/slgZ3vaX12LLNcpLtHreMe1SLKHiJqBV1LPSpEE6tcyAWFtYGGCmklWwtpbq+P5DFRoaA==}
     hasBin: true
 
   ufo@1.5.4:
@@ -5925,6 +5937,8 @@ snapshots:
       delayed-stream: 1.0.0
     optional: true
 
+  commander@14.0.0: {}
+
   commander@9.5.0: {}
 
   compressible@2.0.18:
@@ -6399,9 +6413,10 @@ snapshots:
 
   expect-type@1.1.0: {}
 
-  express-file-routing@3.0.3(express@4.21.2):
+  express-file-routing@https://codeload.github.com/egonSchiele/express-file-routing/tar.gz/ff28e9735931dfc8700c96d38f6c27351c4d6e89(express@4.21.2):
     dependencies:
       express: 4.21.2
+      typestache: 0.4.4
 
   express-static-gzip@2.2.0:
     dependencies:
@@ -8003,6 +8018,8 @@ snapshots:
       mkdirp: 1.0.4
       yallist: 4.0.0
 
+  tarsec@0.0.18: {}
+
   teeny-request@9.0.0:
     dependencies:
       http-proxy-agent: 5.0.0
@@ -8112,6 +8129,13 @@ snapshots:
       - supports-color
 
   typescript@5.7.3: {}
+
+  typestache@0.4.4:
+    dependencies:
+      '@types/node': 22.13.4
+      commander: 14.0.0
+      tarsec: 0.0.18
+      typescript: 5.7.3
 
   ufo@1.5.4: {}
 

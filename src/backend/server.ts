@@ -54,6 +54,7 @@ app.use(
   "/",
   await router({
     directory: path.join(ROOTDIR, "backend", "routes"),
+    apiClientDirectory: path.join(ROOTDIR, "..", "src/frontend/generated"),
   })
 );
 
