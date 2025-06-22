@@ -1,5 +1,11 @@
 This is a web app written in React, TypeScript, and Node. Kysely is used as the ORM, and Vite is used to build assets. All the frontend code lives in `src/frontend`, while the backend lives in `src/backend`.
 
+## notable files and folders
+- `src/frontend/`: Contains all the frontend code, including React components, pages, and styles.
+- `src/backend/`: Contains all the backend code, including API routes, database access, and middleware.
+- `src/backend/routes/api/`: Contains all the API routes for the backend.
+- `src/common/`: Contains code that is shared between the frontend and backend, such as types and utility functions.
+
 ## to add a new page
 All the entry points are html files under `pages/`. To add a new entry point, you'll need to add a new HTML page here, add a corresponding .tsx file under `src/frontend/pages/`, add a new entry in `vite.config.ts` under `build.outDir.rollupOptions.input`, and if needed, add a new path alias in `src/backend/lib/router/entrypoints.ts`.
 
@@ -35,6 +41,13 @@ Some route examples:
 /routes/posts/[id].ts → /posts/:id # dynamic parameter
 /routes/users.ts → /users
 ```
+
+
+All route functions should return a value instead of sending it to the client using `res.json`. The return value should be a `Result` type, which can be either a `Success` or a `Failure`. These types are defined in the file `"@/common/types.js"`. You can use the `success` and `failure` convenience functions to create these types. For an example of how to return a value, see src/backend/routes/api/batches.ts.
+
+All return values should be typed, and all types are stored in the `src/common/apiTypes/` directory. All input bodies should be validated using Zod, and the Zod schemas should be stored in the same file in the API types directory. You should also create a type out of the Zod schema so we can use that type on the frontend. See `src/common/apiTypes/moods.ts` for an example.
+
+
 
 ### Middleware
 
@@ -113,3 +126,25 @@ In order to make a database change, you'll need to add a few things:
 1. Add a migration in `db/migrations`.
 2. Add or modify types in `src/backend/db/types.ts`.
 3. Add finders as needed. You can look at `src/backend/db/mood.ts` for an example.
+
+
+### migrations
+Migrations are done with Kysely. To run migrations, use the following commands:
+
+```bash
+pnpm run kysely migrate make <migration-name>
+pnpm run kysely migrate list
+pnpm run kysely migrate up
+pnpm run kysely migrate down
+```
+
+When creating a new table, if the table has a primary key, please add auto-increment to that field.
+
+## General code quality guidelines
+- Avoid having excessively long functions. Split up long functions into multiple functions where it makes sense. Each function should do one thing.
+- Split up a React component into sub-components when it makes sense.
+- Avoid sharing state. Make as many things private as possible. This will make code much easier to reason about.
+- Have no side effects, if possible. All functions should be deterministic when possible, accepting inputs and returning outputs, and avoiding modifying any shared state in between. 
+
+## Guidance on reusable subcomponents.
+Please create reusable subcomponents where it would help to reduce code duplication. If you create a subcomponent, please put it in its own directory. For example, if you create a subcomponent `Bar.tsx` for a component `Foo.tsx`, please put it at `Foo/Bar.tsx`.
