@@ -48,6 +48,9 @@ export interface MoodTable {
     agent: string | null;
     plan: "free" | "premium";
   }>; */
+
+  updated_at: ColumnType<Date, string | undefined, string | undefined>;
+  deleted_at: ColumnType<Date | null, string | null, string | null>;
 }
 
 // You should not use the table schema interfaces directly. Instead, you should

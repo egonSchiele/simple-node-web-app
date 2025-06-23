@@ -1,7 +1,8 @@
-import type { Kysely } from "kysely";
-import { sql } from "kysely";
+import type { Kysely } from 'kysely';
+import { sql } from 'kysely';
 
 const env = process.env.ENV || "development";
+
 export async function up(db: Kysely<any>): Promise<void> {
   if (env === "production") {
     await upProd(db);
@@ -21,7 +22,10 @@ export async function upProd(db: Kysely<any>): Promise<void> {
     .addColumn("created_at", "timestamp", (col) =>
       col.defaultTo(sql`now()`).notNull()
     )
-
+    .addColumn("updated_at", "timestamp", (col) =>
+      col.defaultTo(sql`now()`).notNull()
+    )
+    .addColumn("deleted_at", "timestamp")
     .execute();
 }
 
@@ -34,6 +38,10 @@ export async function upDev(db: Kysely<any>): Promise<void> {
     .addColumn("created_at", "text", (col) =>
       col.defaultTo(sql`CURRENT_TIMESTAMP`).notNull()
     )
+    .addColumn("updated_at", "text", (col) =>
+      col.defaultTo(sql`CURRENT_TIMESTAMP`).notNull()
+    )
+    .addColumn("deleted_at", "text")
     .execute();
 }
 
