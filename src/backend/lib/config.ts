@@ -1,4 +1,4 @@
-import "@/backend/lib/envfile.js";
+import "./envfile.js";
 import path from "path";
 import { z } from "zod";
 export const __dirname = import.meta.dirname;
@@ -6,6 +6,7 @@ export const ROOTDIR = path.join(__dirname, "../../");
 export const PAGESDIR = path.join(ROOTDIR, "frontend/pages");
 
 const configSchema = z.object({
+  ENV: z.enum(["development", "production"]).default("development"),
   DB_HOST: z.string().default("localhost"),
   DB_PORT: z
     .string()

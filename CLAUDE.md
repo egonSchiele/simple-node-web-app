@@ -124,6 +124,7 @@ import "./posts.css";
 ## database changes
 In order to make a database change, you'll need to add a few things:
 1. Add a migration in `db/migrations`.
+1. Add seeds in `db/seeds`.
 2. Add or modify types in `src/backend/db/types.ts`.
 3. Add finders as needed. You can look at `src/backend/db/mood.ts` for an example.
 
