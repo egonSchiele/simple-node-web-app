@@ -1,4 +1,4 @@
-import "@/backend/lib/envfile.js";
+import "@/backend/lib/envFile.js";
 import { failure, Result, success } from "@/common/types.js";
 import { DecodedIdToken, getAuth } from "firebase-admin/auth";
 import { initializeApp } from "firebase-admin/app";

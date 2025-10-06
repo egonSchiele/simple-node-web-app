@@ -1,4 +1,4 @@
-import "@/backend/lib/envfile.js";
+import "@/backend/lib/envFile.js";
 import entrypointsRouter from "@/backend/lib/router/entrypoints.js";
 import compression from "compression";
 import { parse } from "cookie";
