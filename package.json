@@ -26,7 +26,6 @@
   "description": "",
   "dependencies": {
     "@vitejs/plugin-react": "^4.3.4",
-    "better-sqlite3": "^12.0.0",
     "compression": "^1.7.5",
     "cookie": "^1.0.2",
     "egon-ui": "github:egonSchiele/ui",
@@ -45,7 +44,6 @@
   "devDependencies": {
     "@eslint/js": "^9.19.0",
     "@tailwindcss/vite": "^4.0.3",
-    "@types/better-sqlite3": "^7.6.13",
     "@types/compression": "^1.7.5",
     "@types/cors": "^2.8.17",
     "@types/express": "^5.0.0",
@@ -70,7 +68,6 @@
   },
   "pnpm": {
     "onlyBuiltDependencies": [
-      "better-sqlite3",
       "esbuild",
       "protobufjs"
     ]
