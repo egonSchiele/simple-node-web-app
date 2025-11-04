@@ -13,7 +13,7 @@ const htmlFiles = fs
   .filter((file) => file.endsWith(".html"))
   .map((file) => path.resolve(pagesDir, file));
 
-console.log("HTML files found:", htmlFiles);
+console.log("Vite found these HTML files:", htmlFiles);
 const input = htmlFiles.reduce((acc, file) => {
   const name = path.basename(file, ".html");
   acc[name] = file;

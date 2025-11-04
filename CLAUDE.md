@@ -9,6 +9,8 @@ This is a web app written in React, TypeScript, and Node. Kysely is used as the 
 ## to add a new page
 All the entry points are html files under `pages/`. To add a new entry point, you'll need to add a new HTML page here, add a corresponding .tsx file under `src/frontend/pages/`, add a new entry in `vite.config.ts` under `build.outDir.rollupOptions.input`, and if needed, add a new path alias in `src/backend/lib/router/entrypoints.ts`.
 
+Note that when you link to a new page, you should not use the `.html` extension. For example, if you created a new page `foo.html` and added it to the `entrypoints.ts` file, and you wanted to add a link to that page, you would link to `/foo`, not `/foo.html`.
+
 ## API routes
 All API routes live in `src/backend/routes/api`. Routing happens with the `express-file-routing` package. Each API route exports one or more functions named after HTTP verbs like get, post, put, and del (for DELETE). So, for example, if you wanted to create a new route like
 
@@ -47,7 +49,7 @@ All route functions should return a value instead of sending it to the client us
 
 All return values should be typed, and all types are stored in the `src/common/apiTypes/` directory. All input bodies should be validated using Zod, and the Zod schemas should be stored in the same file in the API types directory. You should also create a type out of the Zod schema so we can use that type on the frontend. See `src/common/apiTypes/moods.ts` for an example.
 
-
+Anytime you add an API route, a function to use that route is automatically generated in `src/frontend/generated/apiClient.ts`. When you're fetching that API route, please use the generated function. If you don't see the function generated, run `pnpm build` to update the file.
 
 ### Middleware
 
@@ -149,3 +151,18 @@ When creating a new table, if the table has a primary key, please add auto-incre
 
 ## Guidance on reusable subcomponents.
 Please create reusable subcomponents where it would help to reduce code duplication. If you create a subcomponent, please put it in its own directory. For example, if you create a subcomponent `Bar.tsx` for a component `Foo.tsx`, please put it at `Foo/Bar.tsx`.
+
+
+When creating pages for a CRUD UI, please keep your code modular. You should have separate React components for displaying information vs. updating information.
+
+## Testing changes
+You can test your changes by running the following command:
+
+```bash
+pnpm run build
+```
+
+## Use egon-ui components where possible.
+
+Wherever possible, please use components from the egon-ui package instead of creating your own components. Find the docs for these components here:
+https://raw.githubusercontent.com/egonSchiele/ui/refs/heads/main/CLAUDE.md
