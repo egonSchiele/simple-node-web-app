@@ -25,7 +25,7 @@ importers:
         version: 4.21.2
       express-file-routing:
         specifier: github:egonSchiele/express-file-routing
-        version: https://codeload.github.com/egonSchiele/express-file-routing/tar.gz/ff28e9735931dfc8700c96d38f6c27351c4d6e89(express@4.21.2)
+        version: https://codeload.github.com/egonSchiele/express-file-routing/tar.gz/b8a456ef6a69938ae67dbfd945b45626887f8d7a(express@4.21.2)
       firebase:
         specifier: ^11.2.0
         version: 11.3.0
@@ -2048,8 +2048,8 @@ packages:
     resolution: {integrity: sha512-FQN4MRfuJeHf7cBbBMJFXhKSDq+2kAArBlmRBvcvFE5BB1HZKXtSFASDhdlz9zOYwxh8lDdnvmMOe/+5cdoEdg==}
     engines: {node: '>= 0.8'}
 
-  commander@14.0.0:
-    resolution: {integrity: sha512-2uM9rYjPvyq39NwLRqaiLtWHyDC1FvryJDa2ATTVims5YAS4PupsEQsDvP14FqhFr0P49CYDugi59xaxJlTXRA==}
+  commander@14.0.2:
+    resolution: {integrity: sha512-TywoWNNRbhoD0BXs1P3ZEScW8W5iKrnbithIl0YH+uCmBd0QpPOA8yc82DS3BIE5Ma6FnBVUsJ7wVUDz4dvOWQ==}
     engines: {node: '>=20'}
 
   commander@9.5.0:
@@ -2351,9 +2351,9 @@ packages:
     resolution: {integrity: sha512-bFi65yM+xZgk+u/KRIpekdSYkTB5W1pEf0Lt8Q8Msh7b+eQ7LXVtIB1Bkm4fvclDEL1b2CZkMhv2mOeF8tMdkA==}
     engines: {node: '>=12.0.0'}
 
-  express-file-routing@https://codeload.github.com/egonSchiele/express-file-routing/tar.gz/ff28e9735931dfc8700c96d38f6c27351c4d6e89:
-    resolution: {tarball: https://codeload.github.com/egonSchiele/express-file-routing/tar.gz/ff28e9735931dfc8700c96d38f6c27351c4d6e89}
-    version: 3.1.0
+  express-file-routing@https://codeload.github.com/egonSchiele/express-file-routing/tar.gz/b8a456ef6a69938ae67dbfd945b45626887f8d7a:
+    resolution: {tarball: https://codeload.github.com/egonSchiele/express-file-routing/tar.gz/b8a456ef6a69938ae67dbfd945b45626887f8d7a}
+    version: 3.1.1
     peerDependencies:
       express: '>4.1.2'
 
@@ -6125,7 +6125,7 @@ snapshots:
       delayed-stream: 1.0.0
     optional: true
 
-  commander@14.0.0: {}
+  commander@14.0.2: {}
 
   commander@9.5.0: {}
 
@@ -6606,7 +6606,7 @@ snapshots:
 
   expect-type@1.1.0: {}
 
-  express-file-routing@https://codeload.github.com/egonSchiele/express-file-routing/tar.gz/ff28e9735931dfc8700c96d38f6c27351c4d6e89(express@4.21.2):
+  express-file-routing@https://codeload.github.com/egonSchiele/express-file-routing/tar.gz/b8a456ef6a69938ae67dbfd945b45626887f8d7a(express@4.21.2):
     dependencies:
       express: 4.21.2
       typestache: 0.4.4
@@ -8336,7 +8336,7 @@ snapshots:
   typestache@0.4.4:
     dependencies:
       '@types/node': 22.13.4
-      commander: 14.0.0
+      commander: 14.0.2
       tarsec: 0.0.18
       typescript: 5.7.3
 
