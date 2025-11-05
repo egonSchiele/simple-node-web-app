@@ -197,7 +197,7 @@ pnpm run build
 ## Use egon-ui components where possible.
 
 Wherever possible, please use components from the egon-ui package instead of creating your own components. Find the docs for these components here:
-https://raw.githubusercontent.com/egonSchiele/ui/refs/heads/main/CLAUDE.md
+https://raw.githubusercontent.com/egonSchiele/ui/refs/heads/main/DOCS_FOR_CLAUDE.md
 
 ## Typescript coding guidelines
 - Always type your variables, function parameters, and return types explicitly. Avoid using `any`.
