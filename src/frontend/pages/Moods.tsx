@@ -37,36 +37,24 @@ const App = () => {
   const loadMoods = async () => {
     setLoading(true);
     setError(null);
-    try {
-      const response = await apiMoodsGet();
-      if (response.success) {
-        setMoods(response.value);
-      } else {
-        setError(response.error || "Failed to load moods");
-      }
-    } catch (err) {
-      setError("Failed to load moods");
-      console.error(err);
-    } finally {
-      setLoading(false);
+    const response = await apiMoodsGet();
+    if (response.success) {
+      setMoods(response.value);
+    } else {
+      setError(response.error || "Failed to load moods");
     }
+    setLoading(false);
   };
 
   const handleCreate = async (mood: "good" | "ok" | "bad", note: string) => {
-    try {
-      const response = await apiMoodsPost({
-        body: JSON.stringify({ mood, note: note || null }),
-      });
-      if (response.success) {
-        await loadMoods();
-        return true;
-      } else {
-        setError(response.error || "Failed to create mood");
-        return false;
-      }
-    } catch (err) {
-      setError("Failed to create mood");
-      console.error(err);
+    const response = await apiMoodsPost({
+      body: JSON.stringify({ mood, note: note || null }),
+    });
+    if (response.success) {
+      await loadMoods();
+      return true;
+    } else {
+      setError(response.error || "Failed to create mood");
       return false;
     }
   };
@@ -76,21 +64,15 @@ const App = () => {
     mood: "good" | "ok" | "bad",
     note: string
   ) => {
-    try {
-      const response = await apiMoodsIdPut(id, {
-        body: JSON.stringify({ mood, note: note || null }),
-      });
-      if (response.success) {
-        await loadMoods();
-        setEditingId(null);
-        return true;
-      } else {
-        setError(response.error || "Failed to update mood");
-        return false;
-      }
-    } catch (err) {
-      setError("Failed to update mood");
-      console.error(err);
+    const response = await apiMoodsIdPut(id, {
+      body: JSON.stringify({ mood, note: note || null }),
+    });
+    if (response.success) {
+      await loadMoods();
+      setEditingId(null);
+      return true;
+    } else {
+      setError(response.error || "Failed to update mood");
       return false;
     }
   };
@@ -100,16 +82,11 @@ const App = () => {
       return;
     }
 
-    try {
-      const response = await apiMoodsIdDelete(id);
-      if (response.success) {
-        await loadMoods();
-      } else {
-        setError(response.error || "Failed to delete mood");
-      }
-    } catch (err) {
-      setError("Failed to delete mood");
-      console.error(err);
+    const response = await apiMoodsIdDelete(id);
+    if (response.success) {
+      await loadMoods();
+    } else {
+      setError(response.error || "Failed to delete mood");
     }
   };
 
