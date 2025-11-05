@@ -19,6 +19,7 @@ import {
   TableHead,
   TableCell,
   HGroupSM,
+  VGroupSM,
 } from "egon-ui";
 import {
   apiMoodsGet,
@@ -70,26 +71,24 @@ const App = () => {
   };
 
   return (
-    <CenteredLayout className="p-lg min-h-screen">
-      <div className="flex justify-between items-center mb-8">
-        <PageHeading>Mood Tracker</PageHeading>
-        <Button onClick={() => (window.location.href = "/")}>
-          Back to Home
-        </Button>
-      </div>
+    <CenteredLayout className="p-lg min-h-screen max-w-[1200px]">
+      <VGroupSM>
+        <div className="flex justify-between items-center mb-8">
+          <PageHeading>Mood Tracker</PageHeading>
+          <Button onClick={() => (window.location.href = "/")}>
+            Back to Home
+          </Button>
+        </div>
 
-      <div className="space-y-6">
         {error && (
           <Banner style="error" className="mb-4">
             {error}
           </Banner>
         )}
 
-        <div className="mb-4">
-          <Button onClick={() => (window.location.href = "/moods/new")}>
-            Add New Mood
-          </Button>
-        </div>
+        <Button onClick={() => (window.location.href = "/moods/new")}>
+          Add New Mood
+        </Button>
 
         <Card>
           <CardHeader>
@@ -115,7 +114,9 @@ const App = () => {
                     <TableRow key={mood.id}>
                       <TableCell>
                         <div className="flex items-center gap-2">
-                          <span className="text-2xl">{getMoodEmoji(mood.mood)}</span>
+                          <span className="text-2xl">
+                            {getMoodEmoji(mood.mood)}
+                          </span>
                           <span className="capitalize">{mood.mood}</span>
                         </div>
                       </TableCell>
@@ -163,7 +164,7 @@ const App = () => {
             )}
           </CardContent>
         </Card>
-      </div>
+      </VGroupSM>
     </CenteredLayout>
   );
 };
