@@ -1,5 +1,5 @@
-import "./globals.css";
-import "./ui.css";
+import "../globals.css";
+import "../ui.css";
 import React, { useEffect, useState } from "react";
 import { createRoot } from "react-dom/client";
 import {
@@ -22,13 +22,10 @@ import {
 } from "egon-ui";
 import {
   apiMoodsGet,
-  apiMoodsPost,
   apiMoodsIdDelete,
 } from "@/frontend/generated/apiClient.js";
 import { Mood } from "@/backend/db/types.js";
-import { MoodCreate } from "./Moods/MoodCreate.js";
 import { getMoodEmoji, formatDate } from "@/frontend/util.js";
-import { MoodValue } from "@/common/types.js";
 
 const App = () => {
   const [moods, setMoods] = useState<Mood[]>([]);
@@ -51,19 +48,6 @@ const App = () => {
     setLoading(false);
   };
 
-  const handleCreate = async (mood: MoodValue, note: string) => {
-    const response = await apiMoodsPost({
-      body: JSON.stringify({ mood, note: note || null }),
-    });
-    if (response.success) {
-      await loadMoods();
-      return true;
-    } else {
-      setError(response.error || "Failed to create mood");
-      return false;
-    }
-  };
-
   const handleDelete = async (id: number) => {
     if (!confirm("Are you sure you want to delete this mood?")) {
       return;
@@ -78,7 +62,11 @@ const App = () => {
   };
 
   const viewMood = (id: number) => {
-    window.location.href = `/mood?id=${id}`;
+    window.location.href = `/moods/${id}`;
+  };
+
+  const editMood = (id: number) => {
+    window.location.href = `/moods/${id}/edit`;
   };
 
   return (
@@ -97,17 +85,11 @@ const App = () => {
           </Banner>
         )}
 
-        <Card>
-          <CardHeader>
-            <CardTitle>Add New Mood</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <MoodCreate
-              onSubmit={handleCreate}
-              onCancel={() => {}}
-            />
-          </CardContent>
-        </Card>
+        <div className="mb-4">
+          <Button onClick={() => (window.location.href = "/moods/new")}>
+            Add New Mood
+          </Button>
+        </div>
 
         <Card>
           <CardHeader>
@@ -117,7 +99,7 @@ const App = () => {
             {loading ? (
               <Paragraph>Loading moods...</Paragraph>
             ) : moods.length === 0 ? (
-              <Paragraph>No moods yet. Add your first mood above!</Paragraph>
+              <Paragraph>No moods yet. Add your first mood!</Paragraph>
             ) : (
               <Table>
                 <TableHeader>
@@ -157,6 +139,13 @@ const App = () => {
                             onClick={() => viewMood(mood.id)}
                           >
                             View
+                          </Button>
+                          <Button
+                            size="sm"
+                            variant="secondary"
+                            onClick={() => editMood(mood.id)}
+                          >
+                            Edit
                           </Button>
                           <Button
                             size="sm"
