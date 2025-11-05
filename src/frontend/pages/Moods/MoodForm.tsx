@@ -1,12 +1,13 @@
 import React from "react";
 import { SimpleForm } from "egon-ui";
+import { getMoodEmoji } from "@/frontend/util.js";
+import { MoodValue } from "@/common/types.js";
 
 type MoodFormProps = {
-  onSubmit: (mood: "good" | "ok" | "bad", note: string) => Promise<boolean>;
+  onSubmit: (mood: MoodValue, note: string) => Promise<boolean>;
   onCancel: () => void;
-  initialMood?: "good" | "ok" | "bad";
+  initialMood?: MoodValue;
   initialNote?: string;
-  getMoodEmoji: (mood: "good" | "ok" | "bad") => string;
   isEditing?: boolean;
 };
 
@@ -15,12 +16,11 @@ export const MoodForm: React.FC<MoodFormProps> = ({
   onCancel,
   initialMood = "ok",
   initialNote = "",
-  getMoodEmoji,
   isEditing = false,
 }) => {
   const handleSubmit = (values: Record<string, string | number | boolean>) => {
     onSubmit(
-      values.mood as "good" | "ok" | "bad",
+      values.mood as MoodValue,
       (values.note as string) || ""
     );
   };

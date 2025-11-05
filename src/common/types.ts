@@ -15,3 +15,5 @@ export function success<T>(value: T): Success<T> {
 export function failure(error: string): Failure {
   return { success: false, error };
 }
+
+export type MoodValue = "good" | "ok" | "bad";

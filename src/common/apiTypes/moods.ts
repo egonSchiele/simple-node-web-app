@@ -1,14 +1,17 @@
 import { z } from "zod";
-import { Result } from "../types.js";
+import { Result, MoodValue } from "../types.js";
 import { Mood } from "../../backend/db/types.js";
 
+// Define the mood enum values for Zod validation
+const moodValues: [MoodValue, ...MoodValue[]] = ["good", "ok", "bad"];
+
 export const CreateMoodSchema = z.object({
-  mood: z.enum(["good", "ok", "bad"]),
+  mood: z.enum(moodValues),
   note: z.string().nullable().optional(),
 });
 
 export const UpdateMoodSchema = z.object({
-  mood: z.enum(["good", "ok", "bad"]).optional(),
+  mood: z.enum(moodValues).optional(),
   note: z.string().nullable().optional(),
 });
 

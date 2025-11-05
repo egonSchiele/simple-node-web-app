@@ -12,23 +12,28 @@ import {
   CenteredLayout,
   Banner,
   Paragraph,
-  VGroupSM,
+  Table,
+  TableHeader,
+  TableBody,
+  TableRow,
+  TableHead,
+  TableCell,
+  HGroupSM,
 } from "egon-ui";
 import {
   apiMoodsGet,
   apiMoodsPost,
-  apiMoodsIdPut,
   apiMoodsIdDelete,
 } from "@/frontend/generated/apiClient.js";
 import { Mood } from "@/backend/db/types.js";
-import { MoodForm } from "./Moods/MoodForm.js";
-import { MoodListItem } from "./Moods/MoodListItem.js";
+import { MoodCreate } from "./Moods/MoodCreate.js";
+import { getMoodEmoji, formatDate } from "@/frontend/util.js";
+import { MoodValue } from "@/common/types.js";
 
 const App = () => {
   const [moods, setMoods] = useState<Mood[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [editingId, setEditingId] = useState<number | null>(null);
 
   useEffect(() => {
     loadMoods();
@@ -46,7 +51,7 @@ const App = () => {
     setLoading(false);
   };
 
-  const handleCreate = async (mood: "good" | "ok" | "bad", note: string) => {
+  const handleCreate = async (mood: MoodValue, note: string) => {
     const response = await apiMoodsPost({
       body: JSON.stringify({ mood, note: note || null }),
     });
@@ -55,24 +60,6 @@ const App = () => {
       return true;
     } else {
       setError(response.error || "Failed to create mood");
-      return false;
-    }
-  };
-
-  const handleUpdate = async (
-    id: number,
-    mood: "good" | "ok" | "bad",
-    note: string
-  ) => {
-    const response = await apiMoodsIdPut(id, {
-      body: JSON.stringify({ mood, note: note || null }),
-    });
-    if (response.success) {
-      await loadMoods();
-      setEditingId(null);
-      return true;
-    } else {
-      setError(response.error || "Failed to update mood");
       return false;
     }
   };
@@ -90,15 +77,8 @@ const App = () => {
     }
   };
 
-  const getMoodEmoji = (mood: "good" | "ok" | "bad") => {
-    switch (mood) {
-      case "good":
-        return "😊";
-      case "ok":
-        return "😐";
-      case "bad":
-        return "😞";
-    }
+  const viewMood = (id: number) => {
+    window.location.href = `/mood?id=${id}`;
   };
 
   return (
@@ -122,10 +102,9 @@ const App = () => {
             <CardTitle>Add New Mood</CardTitle>
           </CardHeader>
           <CardContent>
-            <MoodForm
+            <MoodCreate
               onSubmit={handleCreate}
               onCancel={() => {}}
-              getMoodEmoji={getMoodEmoji}
             />
           </CardContent>
         </Card>
@@ -140,20 +119,58 @@ const App = () => {
             ) : moods.length === 0 ? (
               <Paragraph>No moods yet. Add your first mood above!</Paragraph>
             ) : (
-              <VGroupSM>
-                {moods.map((mood) => (
-                  <MoodListItem
-                    key={mood.id}
-                    mood={mood}
-                    isEditing={editingId === mood.id}
-                    onEdit={() => setEditingId(mood.id)}
-                    onCancelEdit={() => setEditingId(null)}
-                    onUpdate={handleUpdate}
-                    onDelete={handleDelete}
-                    getMoodEmoji={getMoodEmoji}
-                  />
-                ))}
-              </VGroupSM>
+              <Table>
+                <TableHeader>
+                  <TableRow>
+                    <TableHead>Mood</TableHead>
+                    <TableHead>Note</TableHead>
+                    <TableHead>Created</TableHead>
+                    <TableHead>Actions</TableHead>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
+                  {moods.map((mood) => (
+                    <TableRow key={mood.id}>
+                      <TableCell>
+                        <div className="flex items-center gap-2">
+                          <span className="text-2xl">{getMoodEmoji(mood.mood)}</span>
+                          <span className="capitalize">{mood.mood}</span>
+                        </div>
+                      </TableCell>
+                      <TableCell>
+                        {mood.note ? (
+                          <span className="text-gray-700">{mood.note}</span>
+                        ) : (
+                          <span className="text-gray-400 italic">No note</span>
+                        )}
+                      </TableCell>
+                      <TableCell>
+                        <div className="text-sm">
+                          {formatDate(mood.created_at)}
+                        </div>
+                      </TableCell>
+                      <TableCell>
+                        <HGroupSM>
+                          <Button
+                            size="sm"
+                            variant="secondary"
+                            onClick={() => viewMood(mood.id)}
+                          >
+                            View
+                          </Button>
+                          <Button
+                            size="sm"
+                            variant="destructive"
+                            onClick={() => handleDelete(mood.id)}
+                          >
+                            Delete
+                          </Button>
+                        </HGroupSM>
+                      </TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
             )}
           </CardContent>
         </Card>

@@ -5,6 +5,7 @@ import {
   Selectable,
   Updateable,
 } from "kysely";
+import { MoodValue } from "@/common/types.js";
 
 export interface Database {
   // `moods` is the name of the table.
@@ -23,7 +24,7 @@ export interface MoodTable {
   // made optional in inserts and updates.
   id: Generated<number>;
 
-  mood: "good" | "ok" | "bad";
+  mood: MoodValue;
 
   // If the column is nullable in the database, make its type nullable.
   // Don't use optional properties. Optionality is always determined

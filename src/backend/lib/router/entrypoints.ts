@@ -39,6 +39,10 @@ const aliases = {
     file: "moods.html",
     //middleware: [isLoggedIn],
   },
+  "/mood": {
+    file: "mood.html",
+    //middleware: [isLoggedIn],
+  },
 };
 
 Object.entries(aliases).forEach(([alias, entrypoint]: [string, Alias]) => {
