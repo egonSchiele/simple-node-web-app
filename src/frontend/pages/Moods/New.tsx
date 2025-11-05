@@ -13,7 +13,7 @@ import {
   Banner,
 } from "egon-ui";
 import { apiMoodsPost } from "@/frontend/generated/apiClient.js";
-import { MoodCreate } from "./MoodCreate.js";
+import { MoodCreate } from "@/frontend/components/moods/MoodCreate.js";
 import { MoodValue } from "@/common/types.js";
 
 const App = () => {

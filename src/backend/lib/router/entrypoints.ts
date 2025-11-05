@@ -36,19 +36,19 @@ const aliases = {
     middleware: [redirectIfAlreadyLoggedIn],
   },
   "/moods": {
-    file: "moods-index.html",
+    file: "moods/index.html",
     //middleware: [isLoggedIn],
   },
   "/moods/new": {
-    file: "moods-new.html",
+    file: "moods/new.html",
     //middleware: [isLoggedIn],
   },
   "/moods/:id": {
-    file: "moods-show.html",
+    file: "moods/show.html",
     //middleware: [isLoggedIn],
   },
   "/moods/:id/edit": {
-    file: "moods-edit.html",
+    file: "moods/edit.html",
     //middleware: [isLoggedIn],
   },
 };

@@ -8,14 +8,30 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const pagesDir = path.resolve(__dirname, "pages");
-const htmlFiles = fs
-  .readdirSync(pagesDir)
-  .filter((file) => file.endsWith(".html"))
-  .map((file) => path.resolve(pagesDir, file));
+
+// Recursively find all HTML files in pages directory
+function findHtmlFiles(dir: string): string[] {
+  const files: string[] = [];
+  const entries = fs.readdirSync(dir, { withFileTypes: true });
+
+  for (const entry of entries) {
+    const fullPath = path.resolve(dir, entry.name);
+    if (entry.isDirectory()) {
+      files.push(...findHtmlFiles(fullPath));
+    } else if (entry.name.endsWith(".html")) {
+      files.push(fullPath);
+    }
+  }
+
+  return files;
+}
+
+const htmlFiles = findHtmlFiles(pagesDir);
 
 console.log("Vite found these HTML files:", htmlFiles);
 const input = htmlFiles.reduce((acc, file) => {
-  const name = path.basename(file, ".html");
+  const relativePath = path.relative(pagesDir, file);
+  const name = relativePath.replace(/\.html$/, '').replace(/\//g, '-');
   acc[name] = file;
   return acc;
 }, {});

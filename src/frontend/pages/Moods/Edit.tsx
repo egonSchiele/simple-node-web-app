@@ -18,7 +18,7 @@ import {
   apiMoodsIdPut,
 } from "@/frontend/generated/apiClient.js";
 import { Mood as MoodType } from "@/backend/db/types.js";
-import { MoodUpdate } from "./MoodUpdate.js";
+import { MoodUpdate } from "@/frontend/components/moods/MoodUpdate.js";
 import { MoodValue } from "@/common/types.js";
 
 const App = () => {

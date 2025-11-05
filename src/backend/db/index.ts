@@ -12,12 +12,7 @@ const dialect = new PostgresDialect({
     user: config.DB_USER,
     password: config.DB_PASSWORD,
     database: config.DB_DATABASE,
-    ssl: {
-      // You will probably want to use SSL in prod
-      // But this disables it for now so you can test
-      // require: true,
-      rejectUnauthorized: false,
-    },
+    ssl: false,
   }),
 });
 
