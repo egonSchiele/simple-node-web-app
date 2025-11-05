@@ -35,6 +35,10 @@ const aliases = {
     file: "signup.html",
     middleware: [redirectIfAlreadyLoggedIn],
   },
+  "/moods": {
+    file: "moods.html",
+    //middleware: [isLoggedIn],
+  },
 };
 
 Object.entries(aliases).forEach(([alias, entrypoint]: [string, Alias]) => {

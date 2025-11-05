@@ -166,3 +166,12 @@ pnpm run build
 
 Wherever possible, please use components from the egon-ui package instead of creating your own components. Find the docs for these components here:
 https://raw.githubusercontent.com/egonSchiele/ui/refs/heads/main/CLAUDE.md
+
+## Typescript coding guidelines
+- Always type your variables, function parameters, and return types explicitly. Avoid using `any`.
+- Use types over interfaces.
+
+If a type is reusable across many files, put it in the appropriate `types.ts` file:
+- `src/frontend/types.ts` for types that will only be used on the frontend
+- `src/backend/types.ts` for types that will only be used on the backend
+- `src/common/types.ts` for types that will be used on both
