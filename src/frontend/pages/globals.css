@@ -10,7 +10,7 @@
 
 /* 2. Remove default margin */
 * {
-  /* margin: 0; */
+  margin: 0;
 }
 
 body {
@@ -124,4 +124,17 @@ body {
 }
 .link-secondary {
   @apply text-gray-500 cursor-pointer hover:underline;
+}
+
+.center {
+  display: flex;
+
+  /* center the box horizontally */
+  justify-content: center;
+
+  /* center the box vertically */
+  align-items: center;
+
+  /* can also do this, but it causes a scrollbar */
+  /* height: 100vh; */
 }
