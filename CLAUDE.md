@@ -157,7 +157,35 @@ When creating a new table, if the table has a primary key, please add auto-incre
 Please create reusable subcomponents where it would help to reduce code duplication. If you create a subcomponent, please put it in its own directory. For example, if you create a subcomponent `Bar.tsx` for a component `Foo.tsx`, please put it at `Foo/Bar.tsx`.
 
 
-When creating pages for a CRUD UI, please keep your code modular. You should have separate React components for displaying information vs. updating information.
+## Guidance on creating a CRUD UI
+
+For instance, if you are creating a CRUD UI for a resource "Moods", please use the following structure:
+
+### Create
+- html file: pages/moods/new.html
+- react component: src/frontend/pages/Moods/New.tsx
+- route: `post` function in src/backend/routes/api/moods.ts
+
+### Read
+### To read a single item
+- html file: pages/moods/show.html
+- react component: src/frontend/pages/Moods/Show.tsx
+- route: `get` function in src/backend/routes/api/moods/[id].ts
+
+### To read all items
+- html file: pages/moods/index.html
+- react component: src/frontend/pages/Moods/Index.tsx
+- route: `get` function in src/backend/routes/api/moods.ts
+
+### Update
+- html file: pages/moods/edit.html
+- react component: src/frontend/pages/Moods/Edit.tsx
+- route: `put` function in src/backend/routes/api/moods/[id].ts
+
+### Delete
+- route: `del` function in src/backend/routes/api/moods/[id].ts
+
+The create and update endpoints should both use the same form. Shared components like the form should be placed in `src/frontend/components/moods/`.
 
 ## Testing changes
 You can test your changes by running the following command:
@@ -175,7 +203,19 @@ https://raw.githubusercontent.com/egonSchiele/ui/refs/heads/main/CLAUDE.md
 - Always type your variables, function parameters, and return types explicitly. Avoid using `any`.
 - Use types over interfaces.
 
-If a type is reusable across many files, put it in the appropriate `types.ts` file:
-- `src/frontend/types.ts` for types that will only be used on the frontend
-- `src/backend/types.ts` for types that will only be used on the backend
-- `src/common/types.ts` for types that will be used on both
+## General code guidelines
+
+- Keep your code modular.
+- Each React component should only do one thing.
+
+If finding yourself defining the same function or type over and over again, refactor it out into a common file.
+
+For utility functions:
+- If the function will be used only on the backend, add it to `src/backend/util.ts`.
+- If it will be used only on the frontend, add it to `src/frontend/util.ts`.
+- If it will be used on both, add it to `src/common/util.ts`.
+
+Similarly, for types:
+- If the type will be used only on the backend, add it to `src/backend/types.ts`.
+- If it will be used only on the frontend, add it to `src/frontend/types.ts`.
+- If it will be used on both, add it to `src/common/types.ts`.
