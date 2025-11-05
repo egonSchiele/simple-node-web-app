@@ -1,6 +1,8 @@
 // Auto-generated API client
 
-export async function apiMoodsGet(options:Record<string, any> = {}): Promise<any> {
+import type { ApiMoodsResponseGet, ApiMoodsResponsePost, ApiMoodResponseGet, ApiMoodsResponsePut } from "/Users/adit/simple-node-web-app/src/common/apiTypes.js"
+
+export async function apiMoodsGet(options:Record<string, any> = {}): Promise<ApiMoodsResponseGet> {
     const response = await fetch(`/api/moods`, {
         method: "GET",
         headers: {
@@ -14,7 +16,7 @@ export async function apiMoodsGet(options:Record<string, any> = {}): Promise<any
     return response.json();
 }
 
-export async function apiMoodsPost(options:Record<string, any> = {}): Promise<any> {
+export async function apiMoodsPost(options:Record<string, any> = {}): Promise<ApiMoodsResponsePost> {
     const response = await fetch(`/api/moods`, {
         method: "POST",
         headers: {
@@ -42,7 +44,7 @@ export async function apiMoodsIdDelete(id: string | number, options:Record<strin
     return response.json();
 }
 
-export async function apiMoodsIdGet(id: string | number, options:Record<string, any> = {}): Promise<any> {
+export async function apiMoodsIdGet(id: string | number, options:Record<string, any> = {}): Promise<ApiMoodResponseGet> {
     const response = await fetch(`/api/moods/${id}`, {
         method: "GET",
         headers: {
@@ -56,7 +58,7 @@ export async function apiMoodsIdGet(id: string | number, options:Record<string, 
     return response.json();
 }
 
-export async function apiMoodsIdPut(id: string | number, options:Record<string, any> = {}): Promise<any> {
+export async function apiMoodsIdPut(id: string | number, options:Record<string, any> = {}): Promise<ApiMoodsResponsePut> {
     const response = await fetch(`/api/moods/${id}`, {
         method: "PUT",
         headers: {

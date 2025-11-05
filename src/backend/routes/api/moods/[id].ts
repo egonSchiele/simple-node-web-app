@@ -32,6 +32,8 @@ export const get = [
   },
 ];
 
+export const getType = "ApiMoodResponseGet";
+
 export const put = [
   isLoggedIn,
   async (req: Request, res: Response): Promise<ApiMoodsResponsePut> => {
@@ -67,6 +69,8 @@ export const put = [
   },
 ];
 
+export const putType = "ApiMoodsResponsePut";
+
 export const del = [
   isLoggedIn,
   async (req: Request, res: Response): Promise<ApiMoodsResponseDelete> => {
@@ -92,3 +96,5 @@ export const del = [
     return success({ success: true });
   },
 ];
+
+export const delType = "ApiMoodsResponseDelete";

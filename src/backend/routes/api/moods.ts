@@ -21,6 +21,8 @@ export const get = [
   },
 ];
 
+export const getType = "ApiMoodsResponseGet";
+
 export const post = [
   isLoggedIn,
   async (req: Request, res: Response): Promise<ApiMoodsResponsePost> => {
@@ -45,3 +47,5 @@ export const post = [
     return success(newMood);
   },
 ];
+
+export const postType = "ApiMoodsResponsePost";
