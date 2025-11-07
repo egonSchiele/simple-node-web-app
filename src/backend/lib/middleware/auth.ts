@@ -1,7 +1,10 @@
 import { Request, Response, NextFunction } from "express";
 import { verifyIdToken } from "@/backend/lib/firebase.js";
+import { DecodedIdToken } from "firebase-admin/auth";
 
-export const getUser = async (token: string | undefined) => {
+export const getUser = async (
+  token: string | undefined
+): Promise<DecodedIdToken | null> => {
   if (!token) {
     return null;
   }
@@ -17,7 +20,6 @@ export const isLoggedIn = async (
   res: Response,
   next: NextFunction
 ) => {
-  return next();
   const user = await getUser(req.cookies.token);
   if (!user) {
     res.status(401).redirect(`/signin?redirect=${req.originalUrl}`);

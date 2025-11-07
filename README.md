@@ -48,18 +48,4 @@ pnpm run kysely migrate down
 Kysely will create two tables named `kysely_migration` and `kysely_migration_lock`. These tables are used to keep track of which migrations have been run.
 
 ## Authentication
-If you want to do authentication with Firebase (which I highly recommend, it's very simple), you'll need to do the following things.
-
-1. Go to the [Firebase console](https://console.firebase.google.com) and create a new project.
-2. Add auth to your project (left sidebar).
-3. Create a new app in your project: Go to Project Settings (click the gear icon next to your project name), and scroll to the bottom of the page.
-4. Now, under "General", you'll find your Firebase config. The Firebase config contains public information and can be used in the frontend. Add this config to `src/frontend/lib/firebase.ts`. 
-4. Next, generate a new service account key. Go to the "Service accounts" tab and click `Generate new private key`. This key is *private* and must *never* be shown to users or checked into a git repo! Store this JSON file at config/firebase-adminsdk.json.
-5. Add these lines to `.env`:
-
-```
-FIREBASE_CONFIG=config/firebase-adminsdk.json
-GOOGLE_APPLICATION_CREDENTIALS=config/firebase-adminsdk.json
-```
-
-**That's it!** Now visit `http://localhost:3000/signup.html` to sign up as a new user. Then you can visit `https://console.firebase.google.com/project/<your-app-name>/authentication/users` to see your list of users.
+If you want to do authentication with Firebase (which I highly recommend, it's very simple), [read this guide](docs/auth.md).
