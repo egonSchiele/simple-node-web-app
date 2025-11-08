@@ -1,4 +1,4 @@
-import AuthModal, { Section } from "@/frontend/components/AuthModal.jsx";
+import AuthModal from "@/frontend/components/AuthModal.jsx";
 import Banner from "@/frontend/components/ui/Banner.jsx";
 import Spinner from "@/frontend/components/ui/Spinner.jsx";
 import { auth } from "@/frontend/lib/firebase.js";
@@ -10,6 +10,7 @@ import {
 } from "firebase/auth";
 import React from "react";
 import { createRoot } from "react-dom/client";
+import { Input } from "egon-ui";
 import "./globals.css";
 import "./ui.css";
 
@@ -59,31 +60,25 @@ const App = () => {
   return (
     <AuthModal title="Sign up">
       {banner && <Banner level={banner.level} message={banner.message} />}
-      <Section title="Email">
-        <input
-          className="input-text"
-          type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-      </Section>
-      <Section title="Password">
-        <input
-          className="input-text"
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-      </Section>
-      <Section title="Confirm password">
-        <input
-          className="input-text"
-          type="password"
-          value={passwordConfirm}
-          onChange={(e) => setPasswordConfirm(e.target.value)}
-          onKeyDown={(e) => e.key === "Enter" && signUp()}
-        />
-      </Section>
+      <Input
+        type="email"
+        placeholder="Email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+      />
+      <Input
+        type="password"
+        placeholder="Password"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+      />
+      <Input
+        type="password"
+        placeholder="Confirm password"
+        value={passwordConfirm}
+        onChange={(e) => setPasswordConfirm(e.target.value)}
+        onKeyDown={(e) => e.key === "Enter" && signUp()}
+      />
       <button onClick={signUp} className="btn btn-primary">
         Sign up
       </button>
