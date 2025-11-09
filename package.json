@@ -18,7 +18,8 @@
     "kysely": "kysely",
     "migrate": "kysely migrate",
     "seed": "kysely seed",
-    "vite": "vite"
+    "vite": "vite",
+    "compile-client": "compile-client dist/backend/routes src/frontend/generated ../../../src/common/apiTypes.js"
   },
   "keywords": [],
   "author": "",

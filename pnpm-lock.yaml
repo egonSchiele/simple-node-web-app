@@ -25,7 +25,7 @@ importers:
         version: 4.21.2
       express-file-routing:
         specifier: github:egonSchiele/express-file-routing
-        version: https://codeload.github.com/egonSchiele/express-file-routing/tar.gz/b8a456ef6a69938ae67dbfd945b45626887f8d7a(express@4.21.2)
+        version: https://codeload.github.com/egonSchiele/express-file-routing/tar.gz/4b8d8e5a0594581abdcd8bf704ce46c1cec716c0(express@4.21.2)
       firebase:
         specifier: ^11.2.0
         version: 11.3.0
@@ -2351,9 +2351,10 @@ packages:
     resolution: {integrity: sha512-bFi65yM+xZgk+u/KRIpekdSYkTB5W1pEf0Lt8Q8Msh7b+eQ7LXVtIB1Bkm4fvclDEL1b2CZkMhv2mOeF8tMdkA==}
     engines: {node: '>=12.0.0'}
 
-  express-file-routing@https://codeload.github.com/egonSchiele/express-file-routing/tar.gz/b8a456ef6a69938ae67dbfd945b45626887f8d7a:
-    resolution: {tarball: https://codeload.github.com/egonSchiele/express-file-routing/tar.gz/b8a456ef6a69938ae67dbfd945b45626887f8d7a}
+  express-file-routing@https://codeload.github.com/egonSchiele/express-file-routing/tar.gz/4b8d8e5a0594581abdcd8bf704ce46c1cec716c0:
+    resolution: {tarball: https://codeload.github.com/egonSchiele/express-file-routing/tar.gz/4b8d8e5a0594581abdcd8bf704ce46c1cec716c0}
     version: 3.1.1
+    hasBin: true
     peerDependencies:
       express: '>4.1.2'
 
@@ -6606,7 +6607,7 @@ snapshots:
 
   expect-type@1.1.0: {}
 
-  express-file-routing@https://codeload.github.com/egonSchiele/express-file-routing/tar.gz/b8a456ef6a69938ae67dbfd945b45626887f8d7a(express@4.21.2):
+  express-file-routing@https://codeload.github.com/egonSchiele/express-file-routing/tar.gz/4b8d8e5a0594581abdcd8bf704ce46c1cec716c0(express@4.21.2):
     dependencies:
       express: 4.21.2
       typestache: 0.4.4

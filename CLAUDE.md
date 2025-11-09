@@ -239,3 +239,6 @@ Started changelog
 
 ## Writing tests
 For backend code that doesn't touch the database, please write tests using vitest. Test files should be placed alongside the source files. See src/common/util.test.ts for an example.
+
+## Troubleshooting
+If you get errors related to apiClient.ts, you may need to recompile it. Run `pnpm run compile-client` to do so.
