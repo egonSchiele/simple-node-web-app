@@ -236,3 +236,6 @@ Whenever you add a new feature, please add it to the top of CHANGELOG.md along w
 ## Nov 9 2025
 Started changelog
 ```
+
+## Writing tests
+For backend code that doesn't touch the database, please write tests using vitest. Test files should be placed alongside the source files. See src/common/util.test.ts for an example.
