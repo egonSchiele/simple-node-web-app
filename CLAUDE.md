@@ -214,6 +214,7 @@ https://raw.githubusercontent.com/egonSchiele/ui/refs/heads/main/DOCS_FOR_CLAUDE
 
 - Keep your code modular.
 - Each React component should only do one thing.
+- Use descriptive variable names, avoid one or two letter variable names.
 
 If finding yourself defining the same function or type over and over again, refactor it out into a common file.
 
@@ -226,3 +227,12 @@ Similarly, for types:
 - If the type will be used only on the backend, add it to `src/backend/types.ts`.
 - If it will be used only on the frontend, add it to `src/frontend/types.ts`.
 - If it will be used on both, add it to `src/common/types.ts`.
+
+## CHANGELOG.md
+
+Whenever you add a new feature, please add it to the top of CHANGELOG.md along with the timestamp. For example:
+
+```
+## Nov 9 2025
+Started changelog
+```
