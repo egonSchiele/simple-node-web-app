@@ -86,7 +86,7 @@ export const post = async (req: Request, res: Response) => {
   if (!validatedData.success) {
     return res.status(400).json({
       error: "Invalid input",
-      details: validatedData.error.errors,
+      details: validatedData.error.issues,
     });
   }
   const { name, age } = validatedData.data;

@@ -44,7 +44,7 @@ export const put = [
 
     const validatedData = UpdateMoodSchema.safeParse(req.body);
     if (!validatedData.success) {
-      console.error(validatedData.error.errors);
+      console.error(validatedData.error.issues);
       return failure("Invalid input");
     }
 

@@ -28,7 +28,7 @@ export const post = [
   async (req: Request, res: Response): Promise<ApiMoodsResponsePost> => {
     const validatedData = CreateMoodSchema.safeParse(req.body);
     if (!validatedData.success) {
-      console.error(validatedData.error.errors);
+      console.error(validatedData.error.issues);
       return failure("Invalid input");
     }
 
