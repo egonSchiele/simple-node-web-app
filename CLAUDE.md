@@ -127,6 +127,10 @@ For smaller CSS changes, you can add them inline using Tailwind. For larger CSS 
 import "./posts.css";
 ```
 
+## Using Tailwind
+
+When styling with Tailwind, you can use the custom colors in src/frontend/pages/ui.css, and the custom spacing defined in src/frontend/pages/globals.css. For example, don't say `p-3`, say `p-xs`. Similarly you can use xs, sm, md, lg, xl, 2xl, 3xl, and 4xl.
+
 ## database changes
 In order to make a database change, you'll need to add a few things:
 1. Add a migration in `db/migrations`.
@@ -236,6 +240,8 @@ Whenever you add a new feature, please add it to the top of CHANGELOG.md along w
 ## Nov 9 2025
 Started changelog
 ```
+
+Please keep updates concise. It is okay to sacrifice grammar for conciseness.
 
 ## Writing tests
 For backend code that doesn't touch the database, please write tests using vitest. Test files should be placed alongside the source files. See src/common/util.test.ts for an example.

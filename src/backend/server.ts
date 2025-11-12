@@ -7,6 +7,7 @@ import { router } from "express-file-routing";
 import path from "path";
 import { ROOTDIR } from "@/backend/lib/config.js";
 import loggerMiddleware from "@/backend/lib/middleware/logger.js";
+import { color } from "termcolors";
 
 const app = express();
 const port = process.env.PORT || 8234;
@@ -60,5 +61,8 @@ app.use(
 );
 
 app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`);
+  console.log(
+    color.blue(`Example app listening at`),
+    color.yellow(`http://localhost:${port}`)
+  );
 });
