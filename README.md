@@ -49,3 +49,7 @@ Kysely will create two tables named `kysely_migration` and `kysely_migration_loc
 
 ## Authentication
 If you want to do authentication with Firebase (which I highly recommend, it's very simple), [read this guide](docs/auth.md).
+
+## Claude plugin setup
+
+Add the `webapp` plugin from the [egon-market](https://github.com/egonSchiele/egon-market) marketplace.
